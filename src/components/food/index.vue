@@ -19,27 +19,27 @@
                         title: 'name',
                         key: 'title',
                         width:300,
-                        render: (h, params) => {
-                            return h('a',{
-                            on:{
-                                click:()=>{
-                                    this.handleDetail(params)
-                                }
-                            }
-                            },params.row.title);
-                        }
-                    },
-                    {
-                        title: 'size',
-                        key: 'area'
-                    },
-                    {
-                        title: 'area',
-                        key: 'size',
                     },
                     {
                         title: 'price',
                         key: 'price',
+                        render: (h, params) => {
+                            return h('div',params.row.price+'元');
+                        }
+                    },
+                    {
+                        title: 'comment',
+                        key: 'comment',
+                        render: (h, params) => {
+                            return h('div',params.row.comment+'人');
+                        }
+                    },
+                    {
+                        title: 'grade',
+                        key: 'grade',
+                        render: (h, params) => {
+                            return h('div',params.row.grade+'分');
+                        }
                     },
                     {
                         title: 'address',
@@ -51,12 +51,8 @@
         },
         methods: {
             changePage (e) {
-                console.log(e);
                 this.$emit("changePage",e);
             },
-            handleDetail(params){
-                this.$emit('goDetail',params.row);
-            }
         },
     }
 </script>

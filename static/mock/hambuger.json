@@ -1,0 +1,222 @@
+[
+    {
+      "id":1,
+      "imgUrl": "//p0.meituan.net/200.0/deal/3d3248f7535cb77fbed9fac10229507c38505.jpg@124_0_391_391a%7C267h_267w_2e_100Q",
+      "title": "华百万万BRAVO（思北店）",
+      "address": "思明区禾祥西路8号之54店面",
+      "area":"思明",
+      "district":"禾祥西路",
+      "price": 85,
+      "comment":449,
+      "grade":5.0
+    },
+    {
+      "id":2,
+      "imgUrl":"//p0.meituan.net/200.0/deal/fcb1c3eada3d67f8ef2362caabafd747389535.jpg@160_0_960_960a%7C267h_267w_2e_90Q",
+      "title": "BOSSMAN波士曼西餐厅（沙坡尾店）",
+      "address": "思明区大学路94号之三（靠木栈道侧）",
+      "area":"思明",
+      "district":"厦大",
+      "price": 45,
+      "comment":590,
+      "grade":4.7
+    },
+    {
+      "id":3,
+      "imgUrl":"//p0.meituan.net/200.0/deal/9ae91414caa36815135248b8db8b1df994061.jpg@139_0_834_834a%7C267h_267w_2e_90Q",
+      "title": "BURGER BAR 汉堡店",
+      "address": "思明区建业路73号",
+      "area":"思明",
+      "district":"软件园",
+      "price": 59,
+      "comment":352,
+      "grade":3.5
+    },
+    {
+        "id":4,
+        "imgUrl":"//p0.meituan.net/200.0/deal/eb25d34af37722a72252b86476cbd93776863.jpg@124_0_391_391a%7C267h_267w_2e_100Q",
+        "title": "百万万BRAVO（厦大沙坡尾店）",
+        "address": "思明区大学路129号之二（面对见福便利店右拐，有停车的巷子直走进来右手边）",
+        "area":"思明",
+        "district":"厦大",
+        "price": 85,
+        "comment":1156,
+        "grade":5.0
+    },
+    {
+        "id":5,
+        "imgUrl":"//p1.meituan.net/200.0/deal/a87e73a956cd99ba973627498b5beb6383935.jpg@126_0_388_388a%7C267h_267w_2e_100Q",
+        "title": "苏克士（乌涂店）",
+        "address": "同安区新民镇乌涂村仔街173号之一（DJ造型南行20米）",
+        "area":"同安",
+        "district":"同安区",
+        "price": 12.9,
+        "comment":356,
+        "grade":4.6
+    },
+    {
+        "id":6,
+        "imgUrl":"//p0.meituan.net/200.0/deal/bdfb40ae40771f025a4a9b876ffa6a0b60276.jpg@100_0_480_480a%7C267h_267w_2e_90Q",
+        "title": "龙治汉堡（瑞景店）",
+        "address": "思明区莲前东路288号瑞景商业广场1楼",
+        "area":"思明",
+        "district":"莲前",
+        "price": 45,
+        "comment":566,
+        "grade":4.5
+    },
+    {
+        "id":7,
+        "imgUrl":"//p1.meituan.net/200.0/deal/ddcfb0b9cd7f36af76986d5c2cc9acef171483.jpg@83_0_584_584a%7C267h_267w_2e_90Q",
+        "title": "Take Burger行动汉堡西式餐吧（思北店）",
+        "address": "思明区廈禾路261号103之2",
+        "area":"思明",
+        "district":"白鹭洲",
+        "price": 38,
+        "comment":466,
+        "grade":4.4
+    },
+    {
+        "id":8,
+        "imgUrl":"//p0.meituan.net/200.0/deal/3806d00872f2f742bc24c2abb4b9edf9573695.jpg@525_0_1617_1617a%7C267h_267w_2e_90Q",
+        "title": "汉堡王（ 银泰百货厦门集美店）",
+        "address": "集美区同集南路68号银泰百货1层L113号",
+        "area":"集美",
+        "district":"集美其它",
+        "price": 24.5,
+        "comment":232,
+        "grade":3.8
+    },
+    {
+        "id":9,
+        "imgUrl":"//p0.meituan.net/200.0/deal/fcb1c3eada3d67f8ef2362caabafd747389535.jpg@160_0_960_960a%7C267h_267w_2e_90Q",
+        "title": "BOSSMAN波士曼汉堡（新华路店）",
+        "address": "思明区大学路94号之三（靠木栈道侧）",
+        "area":"思明",
+        "district":"厦大",
+        "price": 45,
+        "comment":125,
+        "grade":4.3
+    },
+    {
+        "id":10,
+        "imgUrl":"//p0.meituan.net/200.0/deal/e82e7bbad249f025744c8576f4c4e91f49214.jpg@126_0_388_388a%7C267h_267w_2e_100Q",
+        "title": "肯德基（西安广场店）",
+        "address": "同安区西安路东侧西安广场二期商住楼1层",
+        "area":"同安",
+        "district":"同安区",
+        "price": 71,
+        "comment":205,
+        "grade":3.6
+    },
+    {
+        "id":11,
+        "imgUrl":"//p0.meituan.net/200.0/deal/1b98fe59b37b53efa6fde49d0d45570e47394.jpg@138_0_426_426a%7C267h_267w_2e_90Q",
+        "title": "德克士（国贸店）",
+        "address": "集美区同集南路68号美岁天地负一楼102B号",
+        "area":"集美",
+        "district":"集美其他",
+        "price": 26,
+        "comment":311,
+        "grade":3.9
+    },
+    {
+        "id":12,
+        "imgUrl":"//p0.meituan.net/200.0/deal/e82e7bbad249f025744c8576f4c4e91f49214.jpg@126_0_388_388a%7C267h_267w_2e_100Q",
+        "title": "肯德基（城南店）",
+        "address": "湖里区象屿路97号D栋1层",
+        "area":"湖里",
+        "district":"湖里大道",
+        "price": 71,
+        "comment":359,
+        "grade":3.6
+    },
+    {
+        "id":13,
+        "imgUrl":"//p0.meituan.net/200.0/deal/e82e7bbad249f025744c8576f4c4e91f49214.jpg@126_0_388_388a%7C267h_267w_2e_100Q",
+        "title": "龍治汉堡（松柏店）",
+        "address": "思明区西浦路71号店面",
+        "area":"思明",
+        "district":"松柏",
+        "price": 45,
+        "comment":397,
+        "grade":4.5
+    },
+    {
+        "id":14,
+        "imgUrl":"//p0.meituan.net/200.0/deal/3806d00872f2f742bc24c2abb4b9edf9573695.jpg@525_0_1617_1617a%7C267h_267w_2e_90Q",
+        "title": "汉堡王（闽南古镇店）",
+        "address": "思明区嘉禾路399号SM新生活广场红宝石3楼c319",
+        "area":"思明",
+        "district":"SM",
+        "price": 24.5,
+        "comment":266,
+        "grade":3.8
+    },
+    {
+        "id":15,
+        "imgUrl":"//p1.meituan.net/200.0/deal/b6b6ab8eec828b7aeab2c8d024fc8e28122376.jpg@64_0_573_573a%7C267h_267w_2e_90Q",
+        "title": "麦兹乐汉堡奶茶（锦园店）",
+        "address": "集美区厦门中海锦城国际（锦园东二里7-125）",
+        "area":"集美",
+        "district":"锦园",
+        "price": 13.8,
+        "comment":376,
+        "grade":4.2
+    },
+    {
+        "id":16,
+        "imgUrl":"//p1.meituan.net/200.0/deal/b1f66cc470fddd4b7047d8b150b56f3395137.jpg@26_0_491_491a%7C267h_267w_2e_90Q",
+        "title": "光言（汇景店）",
+        "address": "翔安区祥福路2005号（近祥福五里）",
+        "area":"翔安",
+        "district":"翔安其他",
+        "price": 14.5,
+        "comment":105,
+        "grade":3.7
+    },
+    {
+        "id":17,
+        "imgUrl":"",
+        "title": "林记老思西鸡蛋汉堡",
+        "address": "思明区思明西路山仔顶巷20号",
+        "area":"思明",
+        "district":"禾祥西路",
+        "price": 17,
+        "comment":98,
+        "grade":4.0
+    },
+    {
+        "id":18,
+        "imgUrl":"//p1.meituan.net/200.0/deal/d3661c2514ad0ea0d0abd1c74df6547452108.jpg@267h_267w_2e_100Q",
+        "title": "大又脆汉堡（蔡塘店）",
+        "address": "湖里区蔡塘村口金家园超市斜对面",
+        "area":"湖里",
+        "district":"万达广场",
+        "price": 13.6,
+        "comment":386,
+        "grade":3.5
+    },
+    {
+        "id":19,
+        "imgUrl":"//p1.meituan.net/200.0/deal/b6b6ab8eec828b7aeab2c8d024fc8e28122376.jpg@64_0_573_573a%7C267h_267w_2e_90Q",
+        "title": "麦兹乐汉堡奶茶（宁宝1店）",
+        "address": "集美区杏林街道纺织东路22-6",
+        "area":"集美",
+        "district":"杏林桥头",
+        "price": 13.8,
+        "comment":86,
+        "grade":3.8
+    },
+    {
+        "id":20,
+        "imgUrl":"",
+        "title": "野草莓自由市场·亲爱的汉堡",
+        "address": "思明区鹭江道176-101（财富中心向北100米）",
+        "area":"思明",
+        "district":"轮渡",
+        "price": 57,
+        "comment":583,
+        "grade":4.5
+    }
+]

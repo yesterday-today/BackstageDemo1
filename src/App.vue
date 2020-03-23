@@ -11,6 +11,7 @@ export default {
 </script>
 
 <style>
-#app {
+.ivu-collapse-content-box{
+    padding: 0px !important;
 }
 </style>
