@@ -9,25 +9,33 @@
                                 <Icon type="ios-home" />
                                 租房信息
                             </MenuItem>
+                            <MenuItem name="2">
+                                <Icon type="ios-build" />
+                                房源审核
+                            </MenuItem>
+                            <MenuItem name="3">
+                                <Icon type="md-bus" />
+                                同车互动
+                            </MenuItem>
                         </MenuGroup>
                         <MenuGroup title="美食">
-                            <MenuItem name="2">
+                            <MenuItem name="4">
                                 <Icon type="logo-freebsd-devil" />
                                 汉堡
                             </MenuItem>
-                            <MenuItem name="3">
+                            <MenuItem name="5">
                                 <Icon type="ios-pizza" />
                                 面包
                             </MenuItem>
-                            <MenuItem name="4">
+                            <MenuItem name="6">
                                 <Icon type="ios-restaurant" />
                                 面食
                             </MenuItem>
-                            <MenuItem name="5">
+                            <MenuItem name="7">
                                 <Icon type="ios-nutrition" />
                                 水果
                             </MenuItem>
-                            <MenuItem name="6">
+                            <MenuItem name="8">
                                 <Icon type="md-restaurant" />
                                 主食
                             </MenuItem>
@@ -39,6 +47,9 @@
                         <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu" size="24"></Icon>
                     </Header>
                     <Content :style="{margin: '20px', background: '#fff', minHeight: '530px'}">
+                        <div class="search">
+                            <Input search enter-button placeholder="请输入id进行查询" @on-search="onSearch"/>
+                        </div>
                         <House
                             :currentData="currentData"
                             :count="count"
@@ -48,6 +59,13 @@
                             v-if="selectIndex==1"
                         >
                         </House>
+                        <Rent 
+                            :currentData="currentData"
+                            :count="count"
+                            @changePage="changePage"
+                            :currentPage="currentPage"
+                            v-if="selectIndex==2">
+                        </Rent>
                         <Food
                             :currentData="currentData"
                             :count="count"
@@ -71,13 +89,14 @@
 <script>
 import axios from 'axios';
 import House from '../../components/house/index';
+import Rent from '../../components/house/rent';
 import houseDetail from '../../components/house/detail';
 import Food from '../../components/food/index';
 
 
 export default {
   name: 'home',
-  components:{House,houseDetail,Food},
+  components:{House,Rent,houseDetail,Food},
   data () {
     return {
         isCollapsed: false,
@@ -88,33 +107,37 @@ export default {
         currentData:[],
         modal:false,//true为显示详情
         detailData:[],//详情数据
-
+        searchId:0,//搜索id
     }
   },
   methods: {
     getData(){
         if(this.selectIndex==1){
-            axios.get("/api/house.json")
+            axios.get("/house.json")
             .then(this.getDataSuccess)
         }
         else if(this.selectIndex==2){
-            axios.get("/api/hambuger.json")
-            .then(this.getDataSuccess)
-        }
-        else if(this.selectIndex==3){
-            axios.get("/api/bread.json")
+            axios.get("/rent.json")
             .then(this.getDataSuccess)
         }
         else if(this.selectIndex==4){
-            axios.get("/api/noodle.json")
+            axios.get("/hambuger.json")
             .then(this.getDataSuccess)
         }
         else if(this.selectIndex==5){
-            axios.get("/api/fruit.json")
+            axios.get("/bread.json")
             .then(this.getDataSuccess)
         }
         else if(this.selectIndex==6){
-            axios.get("/api/staple.json")
+            axios.get("/noodle.json")
+            .then(this.getDataSuccess)
+        }
+        else if(this.selectIndex==7){
+            axios.get("/fruit.json")
+            .then(this.getDataSuccess)
+        }
+        else if(this.selectIndex==8){
+            axios.get("/staple.json")
             .then(this.getDataSuccess)
         }
     },
@@ -122,7 +145,6 @@ export default {
         this.data=res.data;
         this.count=res.data.length,
         this.getCurrentData(this.currentPage);
-        console.log(this.data)
     },
     getCurrentData(page){
         if(this.selectIndex==1){
@@ -147,19 +169,13 @@ export default {
           }
         }
         else{
-            console.log("进去")
-            console.log("hambuger",this.data)
           for(let i=page;i<=page;i++){
-              console.log("page",page)
             for(let j=0+(i-1)*10;j<10*i&&j<this.count;j++){
-                console.log(j)
-
                 this.currentData.push(
                     this.data[j]
                 );
             }
           }
-          console.log("currentData",this.currentData)
         }
     },
     collapsedSider () {
@@ -169,7 +185,6 @@ export default {
         this.selectIndex=e;
         console.log(this.selectIndex)
         this.currentPage=1;
-        console.log(this.page);
         this.currentData=[];
         this.getData();
     },
@@ -181,13 +196,40 @@ export default {
     },
     //查看详情
     goDetail(obj){
-        console.log(obj)
         this.modal=true;
         this.detailData=obj;
-
     },
     onCancel(){
         this.modal=false;
+    },
+    onSearch(e){
+        this.searchId=e-1;
+        this.currentPage=1;
+        if(this.searchId>=0&&this.selectIndex==1){
+            this.currentData=[];
+            this.currentData.push(
+                {
+                    id:this.data[this.searchId].id,
+                    title:this.data[this.searchId].title,
+                    size:this.data[this.searchId].type,
+                    area:this.data[this.searchId].size,
+                    price:this.data[this.searchId].price,
+                    address:this.data[this.searchId].area+'-'+this.data[this.searchId].address,
+                    details:{
+                        message:this.data[this.searchId].detail[0].news,
+                        linkPerson:this.data[this.searchId].detail[0].link,
+                        facilities:this.data[this.searchId].detail[0].facilities,
+                    }
+                }
+            );
+        }
+        else if(this.searchId>=0&&this.selectIndex!=1){
+            this.currentData=[];
+            this.currentData.push(this.data[this.searchId]);
+        }
+        else{
+            this.getCurrentData(this.currentPage);
+        }
     }
   },
   mounted(){
@@ -216,7 +258,7 @@ export default {
     position: relative;
     border-radius: 4px;
     overflow: hidden;
-    }
+}
 .layout-header-bar{
     background: #fff;
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
@@ -262,5 +304,8 @@ export default {
 .layout-footer-center{
     text-align: center;
     background: #fff;
+}
+.search{
+    padding: 20px 200px;
 }
 </style>
