@@ -44,24 +44,24 @@ import axios from 'axios';
         methods: {
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
-                    console.log(this.formInline)
-                    if (valid&&this.formInline.user=='15259591797'&&this.formInline.password=='421034') {
-                        this.$Message.success('Success!');
-                        this.$router.replace('/index')
-
-                    } else {
-                        this.$Message.error('Fail!');
-                    }
+                    this.$axios.get("api/login").then(res=>{
+                        if(res.status==200){
+                            if(valid&&this.formInline.user==res.data[0].name&&this.formInline.password==res.data[0].password){
+                                this.$Message.success('Success!');
+                                this.$router.replace('/index')
+                            }
+                            else{
+                                this.$Message.error('Fail!');
+                            }
+                        }
+                    })
                 })
             },
             examin(){
-                this.$axios.get("http://localhost:8800/api/login").then(res=>{
-                    console.log(res);
-                })
+                
             }
         },
         mounted(){
-            this.examin();
         }
     }
 </script>

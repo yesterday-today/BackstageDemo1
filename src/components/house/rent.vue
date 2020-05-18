@@ -1,10 +1,17 @@
 <template>
     <div>
-        <Table border ref="selection" :data="currentData" :columns="tableColumns1"></Table>
+        <Table border ref="selection"
+            :data="currentData"
+            :columns="tableColumns1"
+            @on-selection-change="onChange"
+            @on-select="onSelect"
+            @on-select-all="onSelectAll"
+            >
+        </Table>
         <div class="button">
             <Button @click="handleSelectAll(true)" class="all">设置全选</Button>
             <Button @click="handleSelectAll(false)" class="cancel">取消全选</Button>
-            <Button @click="save" class="total">全部通过</Button>
+            <Button @click="allPass" class="total">全部通过</Button>
         </div>
         <div style="margin: 10px;overflow: hidden">
             <div style="float: right;">
@@ -18,18 +25,21 @@
                 title="审核"
                 @on-ok="ok"
                 @on-cancel="cancel">
-                <p>您确定全部审核通过吗？</p>
+                <p>{{modalText}}</p>
             </Modal>
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
     export default {
         props:['currentData','count','currentPage'],
         data () {
             return {
                 modal1:false,
+                modalText:'',
+                examineData:[],
                 tableColumns1: [
                     // {
                     //     title: 'name',
@@ -48,22 +58,26 @@
                     {
                         type: 'selection',
                         width: 60,
-                        align: 'center'
+                        align: 'center',
+                        disabled: true
                     },
                     {
                         title: '发布者姓名',
-                        key: 'username'
+                        key: 'userName'
                     },
                     {
                         title: '发布内容',
-                        key: 'userContent',
+                        key: 'message',
                         // width:300,
                         tooltip:true,
                     },
                     {
                         title: '发布时间',
                         key: 'uploadTime',
-                        sortable: true
+                        sortable: true,
+                        render:function(h,params){
+                            return h('div',new Date(params.row.uploadTime).toLocaleString().replace(/:\d{1,2}$/, ' '));
+                        }
                     },
                     {
                         title: '是否通过',
@@ -71,22 +85,38 @@
                         width: 150,
                         align: 'center',
                         render: (h, params) => {
-                            return h('div', [
-                                h('Button', {
-                                    props: {
-                                        type: 'primary',
-                                        size: 'small'
-                                    },
-                                    style: {
-                                        marginRight: '5px'
-                                    },
-                                    on: {
-                                        click: () => {
-                                            this.show(params.row.id)
+                            if(params.row.status==1){
+                                return h('div', [
+                                    h('Button', {
+                                        props: {
+                                            type: 'success',
+                                            size: 'small',
+                                            disabled:true
+                                        },
+                                        style: {
+                                            marginRight: '5px',
+                                        },
+                                    }, '审核通过'),
+                                ]);
+                            }
+                            else if(params.row.status==2){
+                                return h('div', [
+                                    h('Button', {
+                                        props: {
+                                            type: 'primary',
+                                            size: 'small',
+                                        },
+                                        style: {
+                                            marginRight: '5px'
+                                        },
+                                        on: {
+                                            click: () => {
+                                                this.show(params.row)
+                                            }
                                         }
-                                    }
-                                }, '审核'),
-                            ]);
+                                    }, '未审核'),
+                                ]);
+                            }
                         },
                         filters: [
                             {
@@ -100,10 +130,10 @@
                         ],
                         filterMultiple: false,
                         filterMethod (value, row) {
-                            if (value === 1) {
-                                return row.status =1;
-                            } else if (value === 2) {
-                                return row.status=2;
+                            if (value === 1&&row.status === 2) {
+                                return row.status =2;
+                            } else if (value === 2&&row.status === 1) {
+                                return row.status=1;
                             }
                         }
                     }
@@ -111,29 +141,50 @@
             }
         },
         methods: {
+            //改变页数
             changePage (e) {
-                console.log(e);
                 this.$emit("changePage",e);
             },
             handleSelectAll (status) {
+                //当status状态为2时，则为管理员未审核过，可进行全选操作
                 this.$refs.selection.selectAll(status);
             },
-            save(){
+            //选中某一项触发
+            onSelect(selection,row){
+                console.log(selection);
+                console.log(row);
+            },
+            //只要选中项发生变化时就会触发,输出为数组
+            onChange(selection){
+                console.log(selection);
+            },
+            //点击全选时触发
+            onSelectAll(selection){
+                this.examineData=selection;
+            },
+            //全部通过审核
+            allPass(){
                 this.modal1=true;
+                this.modalText='您确定全部审核通过吗？';
+            },
+            show (value) {
+                this.examineData=value;
+                this.modal1=true;
+                this.modalText='您确定审核通过吗？';
             },
             handleDetail(){
 
             },
-            show (index) {
-
-                console.log(index)
-            },
-            ok () {
-                this.$Message.info('Clicked ok');
+            ok(){
+                console.log(this.examineData);
+                this.$emit('onOk',this.examineData);
+                this.$Message.info('审核成功');
             },
             cancel () {
-                this.$Message.info('Clicked cancel');
+                this.$Message.info('取消审核');
             }
+        },
+        mounted(){
         }
     }
 </script>
